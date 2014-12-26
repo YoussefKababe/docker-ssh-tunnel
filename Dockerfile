@@ -14,10 +14,10 @@ USER tunneller
 RUN mkdir /home/tunneller/.ssh
 RUN ssh-keygen -f /home/tunneller/.ssh/id_rsa -P ""
 RUN cat /home/tunneller/.ssh/id_rsa.pub > /home/tunneller/.ssh/authorized_keys
-USER root
 RUN chmod 700 /home/tunneller/.ssh
 RUN chmod 600 /home/tunneller/.ssh/authorized_keys
 
+USER root
 ADD entrypoint.sh /entrypoint.sh
 ADD connect.sh /connect.sh
 RUN chmod +x /entrypoint.sh
